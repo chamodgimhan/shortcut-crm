@@ -1,0 +1,24 @@
+{
+  "name": "shortcut-crm",
+  "productName": "Shortcut CRM",
+  "version": "1.0.0",
+  "description": "Desktop app for searching, editing and importing HubSpot CRM records.",
+  "main": "src/main/main.js",
+  "author": "Chamod",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.chamod.shortcutcrm",
+    "productName": "Shortcut CRM",
+    "files": ["src/**/*", "package.json"],
+    "win": { "target": ["portable", "nsis"] }
+  }
+}

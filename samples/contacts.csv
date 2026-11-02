@@ -1,0 +1,6 @@
+First name,Last name,Email,Phone,Company,Job title,Lifecycle stage
+Noor,Vermeer,noor.vermeer@example.com,+31 6 1111 0001,"Vermeer & Co, BV",Operations Lead,lead
+Tim,de Graaf,tim.degraaf@example.com,+31 6 1111 0002,Graaf Logistics,"Head of Sales, Benelux",customer
+Sara,Bakker,sara.bakker@example.com,,Bakker Studio,Designer,lead
+Joris,Smit,not-an-email,+31 6 1111 0004,Smit Bouw,Owner,lead
+Eva,Mulder,eva.mulder@example.com,+31 6 1111 0005,"Mulder ""The Green"" Farm",Founder,subscriber

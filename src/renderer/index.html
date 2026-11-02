@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:" />
+  <title>Shortcut CRM</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Connect screen -->
+  <section id="connect" class="connect">
+    <div class="connect-card">
+      <h1>Shortcut CRM</h1>
+      <p class="muted">Search, edit and import HubSpot records from one window.</p>
+      <form id="connect-form">
+        <label for="token">HubSpot private app token</label>
+        <input id="token" type="password" placeholder="pat-…" autocomplete="off" spellcheck="false" required />
+        <button type="submit" class="primary" id="connect-btn">Connect</button>
+        <p id="connect-error" class="error" hidden></p>
+      </form>
+      <p class="fine">The token stays in memory while the app is open. It is never saved to disk.</p>
+    </div>
+  </section>
+
+  <!-- Main app -->
+  <section id="app" class="app" hidden>
+    <nav class="sidebar">
+      <div class="brand">Shortcut CRM</div>
+      <div id="tabs" class="tabs"></div>
+      <button class="tab" data-view="import" id="import-tab">Import contacts</button>
+      <button class="link" id="disconnect-btn">Disconnect</button>
+    </nav>
+
+    <main class="content">
+      <!-- Records view -->
+      <div id="records-view">
+        <header class="toolbar">
+          <h2 id="view-title">Contacts</h2>
+          <input id="search" type="search" placeholder="Search…" />
+          <button class="primary" id="new-btn">New</button>
+        </header>
+        <div class="table-wrap">
+          <table>
+            <thead><tr id="table-head"></tr></thead>
+            <tbody id="table-body"></tbody>
+          </table>
+          <p id="empty" class="muted center" hidden>No records found.</p>
+          <p id="list-error" class="error center" hidden></p>
+        </div>
+        <footer class="pager">
+          <span id="count" class="muted"></span>
+          <button id="more-btn" hidden>Load more</button>
+        </footer>
+      </div>
+
+      <!-- Import view -->
+      <div id="import-view" hidden>
+        <header class="toolbar"><h2>Import contacts from CSV</h2></header>
+        <div class="import">
+          <p class="muted">The file needs an <code>email</code> column. Also read: first name, last name, phone, company, job title, lifecycle stage. Comma and semicolon files both work.</p>
+          <button class="primary" id="pick-btn">Choose CSV file</button>
+          <div id="import-preview" hidden>
+            <p id="import-summary"></p>
+            <table class="small"><thead><tr><th>Line</th><th>Email</th><th>Name</th><th>Company</th></tr></thead><tbody id="import-sample"></tbody></table>
+            <ul id="import-skipped" class="skipped"></ul>
+            <button class="primary" id="run-import-btn">Import</button>
+          </div>
+          <progress id="import-progress" max="1" value="0" hidden></progress>
+          <div id="import-result"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Edit panel -->
+    <aside id="panel" class="panel" hidden>
+      <header>
+        <h3 id="panel-title"></h3>
+        <button class="link" id="panel-close" aria-label="Close">✕</button>
+      </header>
+      <form id="panel-form"></form>
+      <footer>
+        <span id="panel-status" class="muted"></span>
+        <button class="primary" id="save-btn" form="panel-form" type="submit">Save</button>
+      </footer>
+    </aside>
+  </section>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
